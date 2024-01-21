@@ -36,7 +36,22 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    before: require('./mock/mock-server.js')
+    proxy: {
+      '/api': {
+        target: "http://121.40.21.26:8080",
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        },
+        logLevel: 'debug', // 在终端输出
+        // onProxyRes(proxyRes, req, res) { // 请求头输出x-real-url2
+        //   const realUrl = new URL(req.url || '', process.env.VUE_APP_PLATFORM_URL)?.href || ''
+        //   proxyRes.headers['x-real-url2'] = realUrl
+        //   console.log(req.url)
+        // }
+      }
+    }
+    // before: require('./mock/mock-server.js')
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
