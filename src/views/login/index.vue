@@ -75,7 +75,7 @@
 
 <script>
 import { validUsername } from '@/utils/validate'
-import {login} from '@/api/subject'
+import { login } from '@/api/subject'
 import SocialSign from './components/SocialSignin'
 
 export default {
@@ -153,9 +153,9 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
-          login(this.loginForm).then((res=> {
-            console.log('loginForm', res);
-          }))
+          login(this.loginForm).then(res => {
+            console.log('loginForm', res)
+          })
           // this.$store.dispatch('user/login', this.loginForm)
           //   .then(() => {
           //     this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
